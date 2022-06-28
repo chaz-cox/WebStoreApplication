@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon 2</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div id = "app">
+
+        <div id="WelcomePage" v-if="page == 'welcome'">
+            <h1>Welcome to Store!</h1>
+            <br>
+            <button @click="page = 'store', fetchProducts()">Get Started</button>
+        </div>
+        
+        <div id="StorePage" v-if="page == 'store'">
+            <button @click="page = 'checkout'" style="float: right;"><i class="fa fa-shopping-cart" style="font-size:36px"></i>{{this.Vcart.length}}</button>
+            <product v-for="(product, index) in products"
+                     v-bind:item="product"
+                     v-bind:cart= "Vcart"
+                     v-bind:key="index">
+            </product>
+
+        </div>
+
+        <div id="CheckoutPage" v-if="page == 'checkout'">
+
+        </div>
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src= "app.js"></script>
+</body>
+</html>
